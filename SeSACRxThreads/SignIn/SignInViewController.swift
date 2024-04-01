@@ -46,8 +46,6 @@ class SignInViewController: UIViewController {
         signInButton.rx.tap
             .bind(with: self) { owner, _ in
                 owner.validationBind()
-                // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
-                self.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
             }
             .disposed(by: disposeBag)
     }
@@ -92,6 +90,15 @@ class SignInViewController: UIViewController {
         emailValidation2
             .bind(with: self) { owner, value in
                 owner.emailValidText.onNext("올바른 이메일 형식이 아닙니다.")
+            }
+            .disposed(by: disposeBag)
+        
+        Observable.zip(signInButton.rx.tap, emailValidation1, emailValidation2)
+            .bind(with: self) { owner, value in
+                if value.1 && value.2 {
+                    // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
+                    self.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
+                }
             }
             .disposed(by: disposeBag)
     }

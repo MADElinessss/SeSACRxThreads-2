@@ -42,15 +42,6 @@ class PhoneViewController: UIViewController {
             .bind(to: phoneTextField.rx.text)
             .disposed(by: disposeBag)
         
-//        numberValidation
-//            .bind(to: descriptionLabel.rx.text)
-//            .disposed(by: disposeBag)
-//        
-//        countValidation
-//            .bind(to: descriptionLabel.rx.text)
-//            .disposed(by: disposeBag)
-//        
-        
         let numberValid = phoneTextField.rx.text.orEmpty.map { $0.count >= 10 }
         let countValid = phoneTextField.rx.text.orEmpty.map { Int($0) }
         // let everythingValid = Observable.combineLatest(numberValid, countValid) { $0 && $1 }
