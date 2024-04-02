@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         view.backgroundColor = .white
         configure()
         bind()
-
+        
     }
     
     func bind() {
@@ -43,6 +43,12 @@ class MainViewController: UIViewController {
                 
                 cell.configure(element: element)
                 
+                cell.deleteButton.rx.tap
+                    .bind(with: self) { owner, value in
+                        owner.data.remove(at: row)
+                        owner.items.onNext(owner.data)
+                    }
+                    .disposed(by: cell.disposeBag)
             }
             .disposed(by: disposeBag)
         
@@ -64,25 +70,25 @@ class MainViewController: UIViewController {
     }
     func configure() {
         view.addSubview(tableView)
-         view.addSubview(searchBar)
-         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(plusButtonClicked))
-         navigationItem.titleView = searchBar
+        view.addSubview(searchBar)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "추가", style: .plain, target: self, action: #selector(plusButtonClicked))
+        navigationItem.titleView = searchBar
         tableView.snp.makeConstraints {
             $0.edges.equalTo(view.safeAreaLayoutGuide)
         }
     }
     
     @objc func plusButtonClicked() {
-        let sample = ["A", "B", "C", "D", "E"]
+        let sample = ["🍀Clover", "🐙Octopus", "🥔Potato", "🍏Apple", "🥑Avocado", "🫒Olive", "🥗Salad"]
         data.append(sample.randomElement()!)
         items.onNext(data)
     }
-
+    
     func showOKayAlert(on viewController: UIViewController,
-                   title: String,
-                   message: String,
-                   confirmButtonText: String = "확인",
-                   confirmAction: (() -> Void)? = nil) {
+                       title: String,
+                       message: String,
+                       confirmButtonText: String = "확인",
+                       confirmAction: (() -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let ok = UIAlertAction(title: confirmButtonText, style: .default) { _ in

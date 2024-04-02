@@ -93,16 +93,17 @@ class SignInViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+        // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
+        /// 1. zip
 //        Observable.zip(signInButton.rx.tap, emailValidation1, emailValidation2)
 //            .bind(with: self) { owner, value in
 //                if value.1 && value.2 {
-//                    // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
 //                    owner.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
 //                }
 //            }
 //            .disposed(by: disposeBag)
 
-        // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
+        /// 2. combineLatest
         // combineLatest로 두 개의 validation 조건을 먼저 검사한 후 -> 버튼에 대한 bind로 이 검사값 활용
         let validationResult = Observable.combineLatest(emailValidation1, emailValidation2) { $0 && $1 }
 
@@ -110,7 +111,9 @@ class SignInViewController: UIViewController {
             .withLatestFrom(validationResult)
             .bind(with: self) { owner, value in
                 if value {
-                    owner.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
+                    // owner.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
+                    let vc = MainViewController()
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
             .disposed(by: disposeBag)

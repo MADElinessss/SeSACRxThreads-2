@@ -54,11 +54,11 @@ class MainTableViewCell: UITableViewCell {
         appNameLabel.text = element
         appIconImageView.backgroundColor = .orange
         
-        deleteButton.rx.tap
-            .bind(with: self) { owner, _ in
-                
-            }
-            .disposed(by: disposeBag)
+//        deleteButton.rx.tap
+//            .bind(with: self) { owner, _ in
+//                
+//            }
+//            .disposed(by: disposeBag)
     }
     
     func configureView() {
@@ -87,10 +87,10 @@ class MainTableViewCell: UITableViewCell {
     }
     
     // MARK: Cell 재사용 막기 ⭐️
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        disposeBag = DisposeBag()
-//    }
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
