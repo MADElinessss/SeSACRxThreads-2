@@ -70,54 +70,31 @@ class SignInViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        /// 이메일 유효성 검사(8자 이상, '@'포함)
+        /// 이메일 유효성 검사(8자 이상 && '@'포함)
         emailValidText
             .bind(to: emailDescriptionaLabel.rx.text)
             .disposed(by: disposeBag)
-        /// 이메일 조건1: 8자 이상
-        let emailValidation1 = emailTextField.rx.text.orEmpty.map { $0.count >= 8 }
-        emailValidation1
-            .bind(to: signInButton.rx.isEnabled, emailDescriptionaLabel.rx.isHidden)
+        
+        emailTextField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .subscribe(onNext: viewModel.emailInput)
             .disposed(by: disposeBag)
-        emailValidation1
+        
+        viewModel.emailValid
             .bind(with: self) { owner, value in
-                let color : UIColor = value ? .black : .lightGray
-                owner.signInButton.backgroundColor = color
-            }
-            .disposed(by: disposeBag)
-        /// 이메일 조건2: @ 포함
-        let emailValidation2 = emailTextField.rx.text.orEmpty.map { $0.contains("@") }
-        emailValidation2
-            .bind(to: signInButton.rx.isEnabled, emailDescriptionaLabel.rx.isHidden)
-            .disposed(by: disposeBag)
-        emailValidation2
-            .bind(with: self) { owner, value in
-                owner.emailValidText.onNext("올바른 이메일 형식이 아닙니다.")
+                owner.emailDescriptionaLabel.isHidden = value ? true : false
+                
             }
             .disposed(by: disposeBag)
         
-        // 🐙 TODO: 두 조건이 모두 맞아야 Alert 띄우기
-        /// 1. zip
-//        Observable.zip(signInButton.rx.tap, emailValidation1, emailValidation2)
-//            .bind(with: self) { owner, value in
-//                if value.1 && value.2 {
-//                    owner.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
-//                }
-//            }
-//            .disposed(by: disposeBag)
-
-        /// 2. combineLatest
-        // combineLatest로 두 개의 validation 조건을 먼저 검사한 후 -> 버튼에 대한 bind로 이 검사값 활용
-        let validationResult = Observable.combineLatest(emailValidation1, emailValidation2) { $0 && $1 }
-
+        viewModel.signInButtonValid
+            .bind(to: signInButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
         signInButton.rx.tap
-            .withLatestFrom(validationResult)
-            .bind(with: self) { owner, value in
-                if value {
-                    // owner.showOKayAlert(on: self, title: "로그인 성공", message: "환영합니다!")
-                    let vc = MainViewController()
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
+            .bind(with: self) { owner, _ in
+                let vc = MainViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             .disposed(by: disposeBag)
     }
