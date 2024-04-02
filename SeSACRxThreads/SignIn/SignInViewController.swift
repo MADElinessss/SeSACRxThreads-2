@@ -64,8 +64,6 @@ class SignInViewController: UIViewController {
         
         viewModel.passwordValid
             .bind(with: self) { owner, value in
-                let color : UIColor = value ? .black : .lightGray
-                owner.signInButton.backgroundColor = color
                 owner.passwordDescriptionaLabel.isHidden = value ? true : false
             }
             .disposed(by: disposeBag)
@@ -83,12 +81,20 @@ class SignInViewController: UIViewController {
         viewModel.emailValid
             .bind(with: self) { owner, value in
                 owner.emailDescriptionaLabel.isHidden = value ? true : false
-                
             }
+            .disposed(by: disposeBag)
+        
+        viewModel.emailDescriptionText
+            .bind(to: emailDescriptionaLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.signInButtonValid
             .bind(to: signInButton.rx.isEnabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.signInButtonValid
+            .map { $0 ? UIColor.black : UIColor.lightGray }
+            .bind(to: signInButton.rx.backgroundColor)
             .disposed(by: disposeBag)
         
         signInButton.rx.tap

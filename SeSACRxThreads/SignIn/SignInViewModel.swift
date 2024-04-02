@@ -15,6 +15,8 @@ class SignInViewModel {
     let passwordValid = BehaviorSubject(value: false)
     let signInButtonValid = BehaviorSubject(value: false)
     
+    let emailDescriptionText = BehaviorSubject(value: "")
+    
     private let disposeBag = DisposeBag()
     
     /// BINDING
@@ -42,6 +44,12 @@ class SignInViewModel {
     }
     
     private func checkEmailValid(_ email: String) -> Bool {
-        return email.count >= 8 && email.contains("@")
+        let isValidLength = email.count >= 8
+        let containsAtSymbol = email.contains("@")
+        
+        let description = isValidLength ? (containsAtSymbol ? "" : "올바른 이메일 형식이 아닙니다.") : "이메일은 8자 이상 입력해주세요."
+        emailDescriptionText.onNext(description)
+        
+        return isValidLength && containsAtSymbol
     }
 }
