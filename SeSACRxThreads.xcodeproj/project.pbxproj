@@ -30,6 +30,7 @@
 		041280782AF1D14000972552 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041280772AF1D14000972552 /* Resource.swift */; };
 		C19A13BD2BBAA16B008609C8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13BC2BBAA16B008609C8 /* MainViewController.swift */; };
 		C19A13BF2BBAA199008609C8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */; };
+		C19A13C12BBAAAD5008609C8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		041280772AF1D14000972552 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		C19A13BC2BBAA16B008609C8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			children = (
 				C19A13BC2BBAA16B008609C8 /* MainViewController.swift */,
 				C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */,
+				C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
 				041280582AEFA05300972552 /* SignInViewModel.swift in Sources */,
+				C19A13C12BBAAAD5008609C8 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

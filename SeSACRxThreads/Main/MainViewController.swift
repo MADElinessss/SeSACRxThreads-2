@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
         
         Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(String.self))
             .bind(with: self) { owner, value in
-                self.showOKayAlert(on: self, title: "\(value.1)", message: "Tap!")
+                owner.showOKayAlert(on: self, title: "\(value.1)", message: "Tap!")
             }
             .disposed(by: disposeBag)
         
