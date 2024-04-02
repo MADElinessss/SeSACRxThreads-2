@@ -23,6 +23,7 @@ class SignInViewController: UIViewController {
     let passwordValidText = Observable.just("8자 이상 입력해주세요.")
     
     let disposeBag = DisposeBag()
+    let viewModel = SignInViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,14 +57,16 @@ class SignInViewController: UIViewController {
             .bind(to: passwordDescriptionaLabel.rx.text)
             .disposed(by: disposeBag)
         
-        let passwordValidation = passwordTextField.rx.text.orEmpty.map { $0.count >= 8 }
-        passwordValidation
-            .bind(to: signInButton.rx.isEnabled, passwordDescriptionaLabel.rx.isHidden)
+        passwordTextField.rx.text.orEmpty
+            .distinctUntilChanged()
+            .subscribe(onNext: viewModel.passwordInput)
             .disposed(by: disposeBag)
-        passwordValidation
+        
+        viewModel.passwordValid
             .bind(with: self) { owner, value in
                 let color : UIColor = value ? .black : .lightGray
                 owner.signInButton.backgroundColor = color
+                owner.passwordDescriptionaLabel.isHidden = value ? true : false
             }
             .disposed(by: disposeBag)
         
