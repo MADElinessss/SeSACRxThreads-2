@@ -23,9 +23,10 @@ class MainViewController: UIViewController {
     
     let searchBar = UISearchBar()
     
-    var data = ["🍏Apple", "🥑Avocado", "🫒Olive", "🥗Salad", "🧃Juice", "🥬Cabbage", "🥒Cucumber", "🍋Lemon"]
+    public var data = ["🍏Apple", "🥑Avocado", "🫒Olive", "🥗Salad", "🧃Juice", "🥬Cabbage", "🥒Cucumber", "🍋Lemon"]
     let disposeBag = DisposeBag()
     lazy var items = BehaviorSubject(value: data)
+    lazy var viewModel = MainViewModel(data: data)
     
     override func viewDidLoad() {
         super.viewDidLoad()
