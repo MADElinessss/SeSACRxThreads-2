@@ -32,6 +32,12 @@
 		C19A13BF2BBAA199008609C8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */; };
 		C19A13C12BBAAAD5008609C8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */; };
 		C1D627C92BBFCF6600EEB771 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627C82BBFCF6600EEB771 /* BirthdayViewModel.swift */; };
+		C1D627D12BBFD26300EEB771 /* BoxOfficeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627CB2BBFD26300EEB771 /* BoxOfficeViewModel.swift */; };
+		C1D627D22BBFD26300EEB771 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627CC2BBFD26300EEB771 /* Movie.swift */; };
+		C1D627D32BBFD26300EEB771 /* BoxOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627CD2BBFD26300EEB771 /* BoxOfficeViewController.swift */; };
+		C1D627D42BBFD26300EEB771 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627CE2BBFD26300EEB771 /* Network.swift */; };
+		C1D627D52BBFD26300EEB771 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627CF2BBFD26300EEB771 /* ShareViewController.swift */; };
+		C1D627D62BBFD26300EEB771 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627D02BBFD26300EEB771 /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +84,12 @@
 		C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		C1D627C82BBFCF6600EEB771 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
+		C1D627CB2BBFD26300EEB771 /* BoxOfficeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewModel.swift; sourceTree = "<group>"; };
+		C1D627CC2BBFD26300EEB771 /* Movie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C1D627CD2BBFD26300EEB771 /* BoxOfficeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxOfficeViewController.swift; sourceTree = "<group>"; };
+		C1D627CE2BBFD26300EEB771 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		C1D627CF2BBFD26300EEB771 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		C1D627D02BBFD26300EEB771 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +143,7 @@
 		041280222AEF9BAB00972552 /* SeSACRxThreads */ = {
 			isa = PBXGroup;
 			children = (
+				C1D627CA2BBFD24B00EEB771 /* BoxOffice */,
 				C19A13BB2BBAA143008609C8 /* Main */,
 				041280532AEF9C1F00972552 /* SignUp */,
 				041280542AEF9C2600972552 /* SignIn */,
@@ -210,6 +223,19 @@
 				C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		C1D627CA2BBFD24B00EEB771 /* BoxOffice */ = {
+			isa = PBXGroup;
+			children = (
+				C1D627CD2BBFD26300EEB771 /* BoxOfficeViewController.swift */,
+				C1D627CB2BBFD26300EEB771 /* BoxOfficeViewModel.swift */,
+				C1D627CC2BBFD26300EEB771 /* Movie.swift */,
+				C1D627D02BBFD26300EEB771 /* MovieCollectionViewCell.swift */,
+				C1D627CE2BBFD26300EEB771 /* Network.swift */,
+				C1D627CF2BBFD26300EEB771 /* ShareViewController.swift */,
+			);
+			path = BoxOffice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,18 +377,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1D627D22BBFD26300EEB771 /* Movie.swift in Sources */,
 				041280782AF1D14000972552 /* Resource.swift in Sources */,
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
 				C1D627C92BBFCF6600EEB771 /* BirthdayViewModel.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
+				C1D627D42BBFD26300EEB771 /* Network.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
 				C19A13BF2BBAA199008609C8 /* MainTableViewCell.swift in Sources */,
 				041280562AEFA04800972552 /* SignInViewController.swift in Sources */,
+				C1D627D32BBFD26300EEB771 /* BoxOfficeViewController.swift in Sources */,
+				C1D627D62BBFD26300EEB771 /* MovieCollectionViewCell.swift in Sources */,
 				041280282AEF9BAB00972552 /* ViewController.swift in Sources */,
 				041280632AEFA0CE00972552 /* PointButton.swift in Sources */,
+				C1D627D52BBFD26300EEB771 /* ShareViewController.swift in Sources */,
 				C19A13BD2BBAA16B008609C8 /* MainViewController.swift in Sources */,
 				041280242AEF9BAB00972552 /* AppDelegate.swift in Sources */,
 				041280732AEFAD4B00972552 /* NicknameViewController.swift in Sources */,
+				C1D627D12BBFD26300EEB771 /* BoxOfficeViewModel.swift in Sources */,
 				0412806A2AEFA91E00972552 /* SignUpViewController.swift in Sources */,
 				041280712AEFAD3D00972552 /* PhoneViewController.swift in Sources */,
 				041280262AEF9BAB00972552 /* SceneDelegate.swift in Sources */,
