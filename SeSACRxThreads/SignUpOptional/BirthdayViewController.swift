@@ -4,9 +4,11 @@
 //
 //  Created by jack on 2023/10/30.
 //
- 
-import UIKit
+
 import SnapKit
+import RxCocoa
+import RxSwift
+import UIKit
 
 class BirthdayViewController: UIViewController {
     
@@ -18,14 +20,12 @@ class BirthdayViewController: UIViewController {
         picker.maximumDate = Date()
         return picker
     }()
-    
     let infoLabel: UILabel = {
        let label = UILabel()
         label.textColor = Color.black
         label.text = "만 17세 이상만 가입 가능합니다."
         return label
     }()
-    
     let containerStackView: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
@@ -33,38 +33,33 @@ class BirthdayViewController: UIViewController {
         stack.spacing = 10 
         return stack
     }()
-    
     let yearLabel: UILabel = {
        let label = UILabel()
-        label.text = "2023년"
         label.textColor = Color.black
         label.snp.makeConstraints {
             $0.width.equalTo(100)
         }
         return label
     }()
-    
     let monthLabel: UILabel = {
        let label = UILabel()
-        label.text = "33월"
         label.textColor = Color.black
         label.snp.makeConstraints {
             $0.width.equalTo(100)
         }
         return label
     }()
-    
     let dayLabel: UILabel = {
        let label = UILabel()
-        label.text = "99일"
         label.textColor = Color.black
         label.snp.makeConstraints {
             $0.width.equalTo(100)
         }
         return label
     }()
-  
     let nextButton = PointButton(title: "가입하기")
+    let viewModel = BirthdayViewModel()
+    let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,14 +67,30 @@ class BirthdayViewController: UIViewController {
         view.backgroundColor = Color.white
         
         configureLayout()
-        
-        nextButton.addTarget(self, action: #selector(nextButtonClicked), for: .touchUpInside)
+        bind()
     }
     
-    @objc func nextButtonClicked() {
-        print("가입완료")
+    func bind() {
+        let birthday = birthDayPicker.rx.date
+        let input = BirthdayViewModel.Input(birthday: birthday)
+        let output = viewModel.transform(input)
+        output.year
+            .drive(yearLabel.rx.text)
+            .disposed(by: disposeBag)
+        output.month
+            .drive(monthLabel.rx.text)
+            .disposed(by: disposeBag)
+        output.day
+            .drive(dayLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        nextButton.rx.tap
+            .bind(with: self) { owner, _ in
+                let vc = MainViewController()
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            .disposed(by: disposeBag)
     }
-
     
     func configureLayout() {
         view.addSubview(infoLabel)

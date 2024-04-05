@@ -31,6 +31,7 @@
 		C19A13BD2BBAA16B008609C8 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13BC2BBAA16B008609C8 /* MainViewController.swift */; };
 		C19A13BF2BBAA199008609C8 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */; };
 		C19A13C12BBAAAD5008609C8 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */; };
+		C1D627C92BBFCF6600EEB771 /* BirthdayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D627C82BBFCF6600EEB771 /* BirthdayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		C19A13BC2BBAA16B008609C8 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C19A13BE2BBAA199008609C8 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		C19A13C02BBAAAD5008609C8 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		C1D627C82BBFCF6600EEB771 /* BirthdayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthdayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +197,7 @@
 				0412806E2AEFAD2D00972552 /* BirthdayViewController.swift */,
 				041280702AEFAD3D00972552 /* PhoneViewController.swift */,
 				041280722AEFAD4B00972552 /* NicknameViewController.swift */,
+				C1D627C82BBFCF6600EEB771 /* BirthdayViewModel.swift */,
 			);
 			path = SignUpOptional;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 			files = (
 				041280782AF1D14000972552 /* Resource.swift in Sources */,
 				0412806F2AEFAD2D00972552 /* BirthdayViewController.swift in Sources */,
+				C1D627C92BBFCF6600EEB771 /* BirthdayViewModel.swift in Sources */,
 				041280652AEFA2F000972552 /* SignTextField.swift in Sources */,
 				0412806C2AEFABFE00972552 /* PasswordViewController.swift in Sources */,
 				C19A13BF2BBAA199008609C8 /* MainTableViewCell.swift in Sources */,
